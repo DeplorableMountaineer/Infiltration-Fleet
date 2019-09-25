@@ -98,6 +98,6 @@ MonoBehaviour:
   yPad: 0.15
   missilePrefab: {fileID: 5318067911258685421, guid: c6f73cfb02444ec479da07df74437d8a,
     type: 3}
-  missileSpeed: 20
+  missileSpeedMultiplier: 1
   missileOffset: 0.2
   missileFiringInterval: 0.2

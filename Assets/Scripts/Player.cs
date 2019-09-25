@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float xPad = 0.3f;
     [SerializeField] private float yPad = 0.15f;
     [SerializeField] private GameObject missilePrefab;
-    [SerializeField] private float missileSpeed = 20f;
+    [SerializeField] private float missileSpeedMultiplier = 1f;
     [SerializeField] private float missileOffset = 0.2f;
     [SerializeField] private float missileFiringInterval = 0.2f;
 
@@ -60,8 +60,7 @@ public class Player : MonoBehaviour
         while (true) {
             GameObject missile = Instantiate(missilePrefab, transform.position + missileOffset * Vector3.up,
                 Quaternion.identity);
-            missile.GetComponent<Rigidbody2D>().velocity =
-                new Vector2(0, missileSpeed); //TODO move missileSpeed to missile prefab?
+            missile.GetComponent<Missile>().Launch(missileSpeedMultiplier);
             yield return new WaitForSeconds(missileFiringInterval);
         }
     }
