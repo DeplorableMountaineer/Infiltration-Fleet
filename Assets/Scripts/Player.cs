@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    //Configuration Parameters
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float xPad = 0.3f;
     [SerializeField] private float yPad = 0.15f;
+    [SerializeField] private GameObject missilePrefab;
+    [SerializeField] private float missileSpeed = 20f;
+    [SerializeField] private float missileOffset = 0.2f;
 
 
     private float xMin;
@@ -22,6 +26,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update() {
         Move();
+        Fire();
     }
 
     private void Move() {
@@ -32,6 +37,13 @@ public class Player : MonoBehaviour
         float newYPos = Mathf.Clamp(transform.position.y + deltaY, yMin, yMax);
 
         transform.position = new Vector2(newXPos, newYPos);
+    }
+
+    private void Fire() {
+        if (Input.GetButtonDown("Fire1")) {
+            GameObject missile = Instantiate(missilePrefab, transform.position + missileOffset * Vector3.up, Quaternion.identity);
+            missile.GetComponent<Rigidbody2D>().velocity = new Vector2(0, missileSpeed); //TODO move missileSpeed to missile prefab?
+        }
     }
 
     private void SetUpMoveBoundaries() {
