@@ -100,3 +100,4 @@ MonoBehaviour:
     type: 3}
   missileSpeed: 20
   missileOffset: 0.2
+  missileFiringInterval: 0.2

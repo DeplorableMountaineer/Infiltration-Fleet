@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,12 +12,15 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject missilePrefab;
     [SerializeField] private float missileSpeed = 20f;
     [SerializeField] private float missileOffset = 0.2f;
+    [SerializeField] private float missileFiringInterval = 0.2f;
 
 
     private float xMin;
     private float xMax;
     private float yMin;
     private float yMax;
+
+    private HashSet<Coroutine> firingCoroutines = new HashSet<Coroutine>();
 
     // Start is called before the first frame update
     void Start() {
@@ -40,9 +44,25 @@ public class Player : MonoBehaviour
     }
 
     private void Fire() {
-        if (Input.GetButtonDown("Fire1")) {
-            GameObject missile = Instantiate(missilePrefab, transform.position + missileOffset * Vector3.up, Quaternion.identity);
-            missile.GetComponent<Rigidbody2D>().velocity = new Vector2(0, missileSpeed); //TODO move missileSpeed to missile prefab?
+        if (Input.GetButtonDown("Fire1") && firingCoroutines.Count == 0) {
+            firingCoroutines.Add(StartCoroutine(FireContinuously()));
+        }
+
+        if (Input.GetButtonUp("Fire1")) {
+            foreach (Coroutine r in firingCoroutines) {
+                StopCoroutine(r);
+            }
+            firingCoroutines.Clear();
+        }
+    }
+
+    private IEnumerator FireContinuously() {
+        while (true) {
+            GameObject missile = Instantiate(missilePrefab, transform.position + missileOffset * Vector3.up,
+                Quaternion.identity);
+            missile.GetComponent<Rigidbody2D>().velocity =
+                new Vector2(0, missileSpeed); //TODO move missileSpeed to missile prefab?
+            yield return new WaitForSeconds(missileFiringInterval);
         }
     }
 
