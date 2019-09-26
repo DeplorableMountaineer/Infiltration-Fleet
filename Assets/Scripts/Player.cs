@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float missileSpeedMultiplier = 1f;
     [SerializeField] private float missileOffset = 0.2f;
     [SerializeField] private float missileFiringInterval = 0.2f;
-
+    [SerializeField] private float rotateWithMotionFactor = 4f;
 
     private float xMin;
     private float xMax;
@@ -41,6 +41,8 @@ public class Player : MonoBehaviour
         float newYPos = Mathf.Clamp(transform.position.y + deltaY, yMin, yMax);
 
         transform.position = new Vector2(newXPos, newYPos);
+        transform.eulerAngles = new Vector3(0, 0, -deltaX / 0.2f * rotateWithMotionFactor);
+
     }
 
     private void Fire() {
