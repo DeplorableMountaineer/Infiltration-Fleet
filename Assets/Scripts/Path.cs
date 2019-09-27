@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class Path : MonoBehaviour
 {
-    [SerializeField] private WaveConfig waveConfig;
-    [SerializeField] private float moveSpeed = 2f;
-
+    private WaveConfig waveConfig;
     private int targetWaypoint = 0;
     private float delta = .1f;
     private List<Transform> waypoints;
@@ -21,15 +19,22 @@ public class Path : MonoBehaviour
         Move();
     }
 
+    public void SetWaveConfig(WaveConfig waveConfig) {
+        this.waveConfig = waveConfig;
+    }
+
     private void Move() {
-        if (targetWaypoint < waypoints.Count) {
-            transform.position = Vector2.MoveTowards(transform.position, waypoints[targetWaypoint].position,
-                Time.deltaTime * moveSpeed);
-            if (Vector2.Distance(waypoints[targetWaypoint].position, transform.position) < delta) {
-                targetWaypoint++;
+        if (waveConfig) {
+            if (targetWaypoint < waypoints.Count) {
+                float moveSpeed = waveConfig.GetMoveSpeed();
+                transform.position = Vector2.MoveTowards(transform.position, waypoints[targetWaypoint].position,
+                    Time.deltaTime * moveSpeed);
+                if (Vector2.Distance(waypoints[targetWaypoint].position, transform.position) < delta) {
+                    targetWaypoint++;
+                }
+            } else {
+                Destroy(gameObject);
             }
-        } else {
-            Destroy(gameObject);
         }
     }
 }

@@ -20,6 +20,7 @@ public class EnemySpawner : MonoBehaviour
             GameObject go = Instantiate(waveConfig.GetEnemyPrefab(),
                 waveConfig.GetWaypoints()[0].position,
                 Quaternion.identity);
+            go.GetComponent<Path>().SetWaveConfig(waveConfig);
             yield return new WaitForSeconds(waveConfig.GetSpawnInterval());
         }
     }

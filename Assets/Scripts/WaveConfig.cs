@@ -28,7 +28,7 @@ public class WaveConfig : ScriptableObject
         List<Transform> waypoints = new List<Transform>();
         foreach (Transform wp in pathPrefab.transform) {
             waypoints.Add(wp);
-        }
+        } 
         return waypoints;
     }
 }
