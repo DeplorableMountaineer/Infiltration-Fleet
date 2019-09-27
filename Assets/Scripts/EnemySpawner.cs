@@ -17,7 +17,7 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawnAllEnemiesInWave(WaveConfig waveConfig) {
         for (int i = 0; i < waveConfig.GetNumberOfEnemies(); i++) {
-            Instantiate(waveConfig.GetEnemyPrefab(),
+            GameObject go = Instantiate(waveConfig.GetEnemyPrefab(),
                 waveConfig.GetWaypoints()[0].position,
                 Quaternion.identity);
             yield return new WaitForSeconds(waveConfig.GetSpawnInterval());
