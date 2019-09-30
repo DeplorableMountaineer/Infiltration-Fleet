@@ -6,9 +6,13 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     //Configuration Parameters
+    [Header("Player")]
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float xPad = 0.3f;
     [SerializeField] private float yPad = 0.15f;
+    [SerializeField] private int health = 200;
+
+    [Header("Projectile")]
     [SerializeField] private GameObject missilePrefab;
     [SerializeField] private float missileSpeedMultiplier = 1f;
     [SerializeField] private float missileOffset = 0.2f;
@@ -64,6 +68,19 @@ public class Player : MonoBehaviour
                 Quaternion.identity);
             missile.GetComponent<Missile>().Launch(missileSpeedMultiplier);
             yield return new WaitForSeconds(missileFiringInterval);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        ProcessHit(other.gameObject.GetComponent<DamageDealer>());
+    }
+    private void ProcessHit(DamageDealer damageDealer) {
+        if (damageDealer) {
+            health -= damageDealer.GetDamage();
+            damageDealer.Hit();
+            if (health <= 0) {
+                Destroy(gameObject);
+            }
         }
     }
 
