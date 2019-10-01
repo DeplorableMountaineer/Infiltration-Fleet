@@ -131,3 +131,5 @@ MonoBehaviour:
     type: 3}
   missileSpeedMultiplier: 1
   missileOffset: 1
+  explosionPrefab: {fileID: 760016274455028967, guid: cb10d9e1aacfe3c47886c935f0c1af20,
+    type: 3}

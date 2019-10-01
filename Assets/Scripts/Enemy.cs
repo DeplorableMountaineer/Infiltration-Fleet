@@ -13,12 +13,16 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float missileSpeedMultiplier = 1f;
     [SerializeField] private float missileOffset = 0.8f;
 
-    private Rigidbody2D rb;
+    [Header("Death Effects")]
+    [SerializeField] private GameObject explosionPrefab;
+    [SerializeField] private float explosionDuration = 1f;
+
+
+    private GameObject explosionInstance;
 
     // Start is called before the first frame update
     void Start() {
         shotCounter = UnityEngine.Random.Range(minTimeBetweenShots * .75f, minTimeBetweenShots * 2);
-        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -49,8 +53,23 @@ public class Enemy : MonoBehaviour
             health -= damageDealer.GetDamage();
             damageDealer.Hit();
             if (health <= 0) {
-                Destroy(gameObject);
+                Die();
             }
+        }
+    }
+
+    private void Die() {
+        explosionInstance = Instantiate(explosionPrefab,
+                            gameObject.transform.position,
+                            Quaternion.identity);
+        Invoke("destroyExplosion", explosionDuration);
+        Destroy(gameObject);
+    }
+
+
+    private void destroyExplosion() {
+        if (explosionInstance) {
+            Destroy(explosionInstance);
         }
     }
 }

@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     private float yMin;
     private float yMax;
 
-    private HashSet<Coroutine> firingCoroutines = new HashSet<Coroutine>();
+    private readonly HashSet<Coroutine> firingCoroutines = new HashSet<Coroutine>();
 
     // Start is called before the first frame update
     void Start() {
@@ -41,12 +41,13 @@ public class Player : MonoBehaviour
         float deltaX = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
         float deltaY = Input.GetAxis("Vertical") * Time.deltaTime * moveSpeed;
 
-        float newXPos = Mathf.Clamp(transform.position.x + deltaX, xMin, xMax);
-        float newYPos = Mathf.Clamp(transform.position.y + deltaY, yMin, yMax);
+        Transform t = transform;
+        Vector2 pos = t.position;
+        float newXPos = Mathf.Clamp(pos.x + deltaX, xMin, xMax);
+        float newYPos = Mathf.Clamp(pos.y + deltaY, yMin, yMax);
 
-        transform.position = new Vector2(newXPos, newYPos);
-        transform.eulerAngles = new Vector3(0, 0, -deltaX / 0.2f * rotateWithMotionFactor);
-
+        t.position = new Vector2(newXPos, newYPos);
+        t.eulerAngles = new Vector3(0, 0, -deltaX / 0.2f * rotateWithMotionFactor);
     }
 
     private void Fire() {

@@ -5,8 +5,8 @@ using UnityEngine;
 public class BackgroundScroller : MonoBehaviour
 {
     [SerializeField] private Vector2 backgroundScrollSpeed = Vector2.down * .1f;
-    private Material material;
 
+    private Material material;
     private Vector2 offset;
 
     // Start is called before the first frame update

@@ -32,9 +32,4 @@ public class EnemySpawner : MonoBehaviour
             yield return new WaitForSeconds(waveConfig.GetSpawnInterval());
         }
     }
-
-    // Update is called once per frame
-    void Update() {
-
-    }
 }
