@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3206958313685338008}
   - component: {fileID: -2473228556225720421}
   - component: {fileID: -6239127753432638531}
+  - component: {fileID: -909297617379620170}
   m_Layer: 9
   m_Name: Enemy 1
   m_TagString: Untagged
@@ -124,17 +125,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 745017b8005326c4eb3d80bef07e332f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
   shotCounter: 0
   minTimeBetweenShots: 0.2
   maxTimeBetweenShots: 3
-  missilePrefab: {fileID: 5318067911258685421, guid: 33ffd89e5bcaac24e83e58bde653ec15,
-    type: 3}
-  missileSpeedMultiplier: 1
-  missileOffset: 1
-  explosionPrefab: {fileID: 760016274455028967, guid: cb10d9e1aacfe3c47886c935f0c1af20,
-    type: 3}
-  explosionDuration: 1
 --- !u!114 &-6239127753432638531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,3 +145,17 @@ MonoBehaviour:
   missileSpeedMultiplier: 1
   missileOffset: 1
   rapidFireInterval: 0.2
+--- !u!114 &-909297617379620170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111801588660800708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca29310b3e0bf1a439f1a8f697fe3957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  deathVfx: {fileID: 760016274455028967, guid: cb10d9e1aacfe3c47886c935f0c1af20, type: 3}

@@ -10,13 +10,9 @@ public class Player : MonoBehaviour
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float xPad = 0.3f;
     [SerializeField] private float yPad = 0.15f;
-    [SerializeField] private int health = 200;
     [SerializeField] private float rotateWithMotionFactor = 4f;
 
     [Header("Projectile")]
-    [SerializeField] private GameObject missilePrefab;
-    [SerializeField] private float missileSpeedMultiplier = 1f;
-    [SerializeField] private float missileOffset = 0.2f;
     [SerializeField] private float missileFiringInterval = 0.2f;
 
     private float xMin;
@@ -24,6 +20,7 @@ public class Player : MonoBehaviour
     private float yMin;
     private float yMax;
     private Gun gun;
+    private Health health;
 
     private readonly HashSet<Coroutine> firingCoroutines = new HashSet<Coroutine>();
 
@@ -31,6 +28,7 @@ public class Player : MonoBehaviour
     void Start() {
         SetUpMoveBoundaries();
         gun = GetComponent<Gun>();
+        health = GetComponent<Health>();
     }
 
     // Update is called once per frame
@@ -77,11 +75,8 @@ public class Player : MonoBehaviour
     }
     private void ProcessHit(DamageDealer damageDealer) {
         if (damageDealer) {
-            health -= damageDealer.GetDamage();
+            health.Hit(damageDealer.GetDamage());
             damageDealer.Hit();
-            if (health <= 0) {
-                Destroy(gameObject);
-            }
         }
     }
 
