@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5806126160014890775}
   - component: {fileID: 5806126160014890774}
   - component: {fileID: 1606214789376320902}
+  - component: {fileID: -4073101098790815896}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -98,12 +99,12 @@ MonoBehaviour:
   xPad: 0.3
   yPad: 0.15
   health: 300
+  rotateWithMotionFactor: 4
   missilePrefab: {fileID: 5318067911258685421, guid: c6f73cfb02444ec479da07df74437d8a,
     type: 3}
   missileSpeedMultiplier: 1
   missileOffset: 0.4
   missileFiringInterval: 0.2
-  rotateWithMotionFactor: 4
 --- !u!60 &1606214789376320902
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -133,3 +134,20 @@ PolygonCollider2D:
       - {x: 0.39, y: -0.18}
       - {x: 0, y: 0.2}
       - {x: -0.39, y: -0.18}
+--- !u!114 &-4073101098790815896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5806126160014890773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05082c22d7aa71a4d9df83f4bcb3558d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missilePrefab: {fileID: 5318067911258685421, guid: c6f73cfb02444ec479da07df74437d8a,
+    type: 3}
+  missileSpeedMultiplier: 1
+  missileOffset: 0.4
+  rapidFireInterval: 0.2

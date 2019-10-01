@@ -11,24 +11,26 @@ public class Player : MonoBehaviour
     [SerializeField] private float xPad = 0.3f;
     [SerializeField] private float yPad = 0.15f;
     [SerializeField] private int health = 200;
+    [SerializeField] private float rotateWithMotionFactor = 4f;
 
     [Header("Projectile")]
     [SerializeField] private GameObject missilePrefab;
     [SerializeField] private float missileSpeedMultiplier = 1f;
     [SerializeField] private float missileOffset = 0.2f;
     [SerializeField] private float missileFiringInterval = 0.2f;
-    [SerializeField] private float rotateWithMotionFactor = 4f;
 
     private float xMin;
     private float xMax;
     private float yMin;
     private float yMax;
+    private Gun gun;
 
     private readonly HashSet<Coroutine> firingCoroutines = new HashSet<Coroutine>();
 
     // Start is called before the first frame update
     void Start() {
         SetUpMoveBoundaries();
+        gun = GetComponent<Gun>();
     }
 
     // Update is called once per frame
@@ -65,9 +67,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator FireContinuously() {
         while (true) {
-            GameObject missile = Instantiate(missilePrefab, transform.position + missileOffset * Vector3.up,
-                Quaternion.identity);
-            missile.GetComponent<Missile>().Launch(missileSpeedMultiplier);
+            gun.Fire(Vector2.up);
             yield return new WaitForSeconds(missileFiringInterval);
         }
     }

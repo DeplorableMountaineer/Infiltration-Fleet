@@ -19,10 +19,12 @@ public class Enemy : MonoBehaviour
 
 
     private GameObject explosionInstance;
+    private Gun gun;
 
     // Start is called before the first frame update
     void Start() {
         shotCounter = UnityEngine.Random.Range(minTimeBetweenShots * .75f, minTimeBetweenShots * 2);
+        gun = GetComponent<Gun>();
     }
 
     // Update is called once per frame
@@ -39,9 +41,7 @@ public class Enemy : MonoBehaviour
 
     private void Fire() {
         shotCounter = UnityEngine.Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
-        GameObject missile = Instantiate(missilePrefab, transform.position + missileOffset * Vector3.down,
-            Quaternion.Euler(0, 0, 180));
-        missile.GetComponent<Rigidbody2D>().velocity = new Vector2(0, missileSpeedMultiplier * -5f);
+        gun.Fire(Vector2.down);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {

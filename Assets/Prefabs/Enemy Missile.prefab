@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4759066808103020569}
   - component: {fileID: -5688963888816704766}
   - component: {fileID: 2855805114169265618}
+  - component: {fileID: 124040320050049586}
   m_Layer: 11
   m_Name: Enemy Missile
   m_TagString: Untagged
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_Sprite: {fileID: 21300000, guid: 5a2be3a5fa328a54b9149587d776aeb6, type: 3}
   m_Color: {r: 0.9528302, g: 0.7281061, b: 0.7281061, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 0.32, y: 1.04}
   m_AdaptiveModeThreshold: 0.5
@@ -143,5 +144,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 100
-  explosionPrefab: {fileID: 760016274455028967, guid: cb10d9e1aacfe3c47886c935f0c1af20,
-    type: 3}
+--- !u!114 &124040320050049586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5318067911258685421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68656e750ee883f42a06d8adff3b23a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseMissileSpeed: 5
