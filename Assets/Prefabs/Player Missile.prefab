@@ -144,6 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseMissileSpeed: 20
+  audioClip: {fileID: 8300000, guid: 01697073950f41e47bb4a9fd8d1f5436, type: 3}
 --- !u!114 &3188395024087097888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,5 +158,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 100
-  explosionPrefab: {fileID: 760016274455028967, guid: cb10d9e1aacfe3c47886c935f0c1af20,
-    type: 3}

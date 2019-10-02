@@ -125,17 +125,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 745017b8005326c4eb3d80bef07e332f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 200
   shotCounter: 0
   minTimeBetweenShots: 0.2
   maxTimeBetweenShots: 3
-  missilePrefab: {fileID: 5318067911258685421, guid: 33ffd89e5bcaac24e83e58bde653ec15,
-    type: 3}
-  missileSpeedMultiplier: 1
-  missileOffset: 1
-  explosionPrefab: {fileID: 760016274455028967, guid: cb10d9e1aacfe3c47886c935f0c1af20,
-    type: 3}
-  explosionDuration: 1
 --- !u!114 &6047579294398798731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,3 +159,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 200
   deathVfx: {fileID: 760016274455028967, guid: cb10d9e1aacfe3c47886c935f0c1af20, type: 3}
+  deathAudio: {fileID: 8300000, guid: a172e5ed27037f34281ee840f129ff40, type: 3}

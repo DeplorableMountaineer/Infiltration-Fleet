@@ -157,3 +157,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseMissileSpeed: 5
+  audioClip: {fileID: 8300000, guid: 01697073950f41e47bb4a9fd8d1f5436, type: 3}
