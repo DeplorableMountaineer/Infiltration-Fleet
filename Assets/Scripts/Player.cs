@@ -87,4 +87,13 @@ public class Player : MonoBehaviour
         yMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y + yPad;
         yMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 0.5f, 0)).y;
     }
+
+    private void OnDestroy() {
+        GameOver();
+    }
+
+
+    private void GameOver() {
+        FindObjectOfType<Level>().LoadGameOver();
+    }
 }
