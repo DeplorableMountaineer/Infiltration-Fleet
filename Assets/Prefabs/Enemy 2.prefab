@@ -158,5 +158,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 200
-  deathVfx: {fileID: 760016274455028967, guid: cb10d9e1aacfe3c47886c935f0c1af20, type: 3}
-  deathAudio: {fileID: 8300000, guid: a172e5ed27037f34281ee840f129ff40, type: 3}
+  deathVFX: {fileID: 760016274455028967, guid: cb10d9e1aacfe3c47886c935f0c1af20, type: 3}
+  deathSFX: {fileID: 8300000, guid: a172e5ed27037f34281ee840f129ff40, type: 3}
+  deathPointValue: 20
