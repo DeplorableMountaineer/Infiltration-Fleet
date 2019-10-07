@@ -3,8 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
-{
+public class Player : MonoBehaviour {
     //Configuration Parameters
     [Header("Player")]
     [SerializeField] private float moveSpeed = 10f;
@@ -51,12 +50,12 @@ public class Player : MonoBehaviour
     }
 
     private void Fire() {
-        if (Input.GetButtonDown("Fire1") && firingCoroutines.Count == 0) {
+        if(Input.GetButtonDown("Fire1") && firingCoroutines.Count == 0) {
             firingCoroutines.Add(StartCoroutine(FireContinuously()));
         }
 
-        if (Input.GetButtonUp("Fire1")) {
-            foreach (Coroutine r in firingCoroutines) {
+        if(Input.GetButtonUp("Fire1")) {
+            foreach(Coroutine r in firingCoroutines) {
                 StopCoroutine(r);
             }
             firingCoroutines.Clear();
@@ -64,7 +63,7 @@ public class Player : MonoBehaviour
     }
 
     private IEnumerator FireContinuously() {
-        while (true) {
+        while(true) {
             gun.Fire(Vector2.up);
             yield return new WaitForSeconds(missileFiringInterval);
         }
@@ -74,7 +73,7 @@ public class Player : MonoBehaviour
         ProcessHit(other.gameObject.GetComponent<DamageDealer>());
     }
     private void ProcessHit(DamageDealer damageDealer) {
-        if (damageDealer) {
+        if(damageDealer) {
             health.Hit(damageDealer.GetDamage());
             damageDealer.Hit();
         }
@@ -94,6 +93,9 @@ public class Player : MonoBehaviour
 
 
     private void GameOver() {
-        FindObjectOfType<Level>().LoadGameOver();
+        Level level = FindObjectOfType<Level>();
+        if(level) {
+            level.LoadGameOver();
+        }
     }
 }
