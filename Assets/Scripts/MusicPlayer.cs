@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
 
-public class MusicPlayer : MonoBehaviour
-{
+public class MusicPlayer : MonoBehaviour {
 
     [SerializeField] private AudioClip[] playList;
 
@@ -16,7 +15,7 @@ public class MusicPlayer : MonoBehaviour
     private double clipDuration = 0.5;
 
     void Awake() {
-        if (FindObjectsOfType<MusicPlayer>().Length > 1) {
+        if(FindObjectsOfType<MusicPlayer>().Length > 1) {
             gameObject.SetActive(false);
             Destroy(gameObject);
         } else {
@@ -27,9 +26,9 @@ public class MusicPlayer : MonoBehaviour
 
     private IEnumerator Start() {
         float delay;
-        while (true) {
+        while(true) {
             delay = 0;
-            while (delay < 1) {
+            while(delay < 1) {
                 delay += PlayNextClip();
             }
             yield return new WaitForSeconds(delay - 1);
@@ -37,7 +36,7 @@ public class MusicPlayer : MonoBehaviour
     }
 
     private float PlayNextClip() {
-        if (nextClipTime <= 0) {
+        if(nextClipTime <= 0) {
             nextClipTime = AudioSettings.dspTime;
         }
         nextClipTime += clipDuration;
